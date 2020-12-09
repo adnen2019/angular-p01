@@ -1,0 +1,118 @@
+
+<div class="container">
+  <form   (ngSubmit)="onSubmit(f)" #f="ngForm"   >
+    <div >
+    <h1 class="page center"> Contact-us  </h1>
+
+    <label for="name"> Name  </label><br>
+    <input
+      value=""
+      class="form-control"
+      id="name"
+      type="text"
+      name='name'
+      [(ngModel)]='f.value.name'
+      required
+      #name="ngModel"
+       />
+      <br>
+      <div class="text-center help-block" *ngIf="!name.valid && name.touched">This field is required!<br></div>
+
+    <!-- <div class="center">This field is required</div><br> -->
+    <!-- <span *ngIf="messageForm.get('name').errors['required']">This field is required!</span> -->
+
+
+    <label for="sname"> Second name  </label><br>
+    <input
+      value=""
+      class="form-control"
+      id="sname"
+      type="text"
+      name="sname"
+      required
+      #sname="ngModel"
+      [(ngModel)]='f.value.sname'
+
+       /><br>
+       <div class="text-center help-block" *ngIf="!sname.valid && sname.touched">This field is required!<br></div>
+
+    <!-- <div class="center">This field is required</div><br> -->
+    <!-- <span *ngIf="messageForm.get('sname').errors['required']">This field is required!</span> -->
+
+
+    <label for="email"> E-mail  </label><br>
+    <input
+      value=""
+      class="form-control"
+      id="email"
+      type="email"
+      name="email"
+      [(ngModel)]='f.value.email'
+      required
+      email
+      #email="ngModel"
+       /><br>
+       <div class="text-center help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!<br></div>
+       <!-- <span
+       *ngIf="!messageForm.get('email').valid && messageForm.get('email').touched"
+       class="help-block">Please enter a valid email!</span> -->
+    <!-- <div (mouseenter)="verif()" *ngIf="verified && messageForm.controls.email.errors" class="center">Please enter a valid email !</div><br> -->
+
+    <label for="mdp"> Password  </label><br>
+    <input
+      value=""
+      class="form-control"
+      id="mdp"
+      type="password"
+      name="mdp"
+      [(ngModel)]='f.value.mdp'
+      required
+      #mdp="ngModel"
+       /><br>
+       <div class="text-center help-block" *ngIf="!mdp.valid && mdp.touched">This field is required!<br></div>
+
+       <!-- <span *ngIf="messageForm.get('mdp').errors['required']">This field is required!</span> -->
+
+    <!-- <div class="center help-block">This field is required</div><br> -->
+       <br>
+    <div class="text-center">
+      <input
+      class=" btn btn-primary"
+      type="submit"
+      id="inscri"
+      name="send"
+      value="Send"
+      [disabled]="!f.valid"
+       >
+    </div>
+
+       <br>
+      </div>
+  </form>
+  <br>
+  <div class="row">
+    <div class="col-6">
+      <app-data-submitted
+    [name]="namev"
+    [sname]="snamev"
+    [email]="emailv"
+    [mdp]="mdpv"
+    [submitted]="submitted"
+    ></app-data-submitted>
+    </div>
+
+    <div class="col-6">
+      <app-data
+      [named]="f.value.name"
+      [snamed]="f.value.sname"
+      [emaild]="f.value.email"
+      [mdpd]="f.value.mdp"
+
+      ></app-data>
+    </div>
+
+  </div>
+
+</div>
+
+
